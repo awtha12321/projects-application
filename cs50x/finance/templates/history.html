@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+              <th scope="col">Symbol</th>
+              <th scope="col">Shares</th>
+              <th scope="col">Price</th>
+              <th scope="col">Transacted</th>
+            </tr>
+        </thead>
+        <tbody>
+
+           {% if recent_row %}
+
+                {% for items in recent_row %}
+                    <tr>
+                       <td>{{ items.symbol }}</td>
+                       <td>{{ items.shares }}</td>
+                       <td>{{ items.price | usd }}</td>
+                       <td>{{ items.time }}</td>
+                    </tr>
+                {% endfor %}
+
+           {% endif %}
+
+        </tbody>
+    </table>
+{% endblock %}

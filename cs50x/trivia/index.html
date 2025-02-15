@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+
+            function right_ans(id) {
+                document.getElementById(id).style.background = "green";
+                document.getElementById("result").innerHTML = "Correct!";
+            }
+
+             function wrong_ans(id) {
+                document.getElementById(id).style.background = "red";
+                document.getElementById("result").innerHTML = "Incorrect!";
+            }
+
+            function text_checking() {
+                var n = document.forms["fname"]["input"].value;
+                var i = n.toLowerCase();
+                if (i == "" || i == null) {
+                    document.getElementById("ans").innerHTML = "fill in the text fields";
+                }
+                else {
+                    if (i == "black clover") {
+                        document.getElementById("text_ans").style.background = "green";
+                        document.getElementById("ans").innerHTML = "Correct!";
+                    }
+                    else {
+                        document.getElementById("text_ans").style.background = "red";
+                        document.getElementById("ans").innerHTML = "Incorrect!";
+                    }
+                }
+            }
+
+
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <!-- TODO: Add multiple choice question here -->
+                <h3>Which one is a romance anime?</h3>
+                <p id="result"></p>
+
+                <button id="black clover" onclick="wrong_ans(this.id)">Black Clover</button>
+                <button id="oregairu" onclick="right_ans(this.id)">Oregairu</button>
+                <button id="naruto shippuden" onclick="wrong_ans(this.id)">Naruto Shippuden</button>
+                <button id="aot" onclick="wrong_ans(this.id)">Attack On Titan</button>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <!-- TODO: Add free response question here -->
+                <h3>Anime with devils' powers. Hint: one of those animes from the above.</h3>
+                <p id="ans"></p>
+
+                <form name="fname">
+                    <input type="text" id="text_ans" name="input" autocomplete="off">
+                    <button onclick="text_checking()">Check Answer</button>
+                </form>
+            </div>
+
+        </div>
+    </body>
+</html>

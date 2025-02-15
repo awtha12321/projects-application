@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+              <th scope="col">Symbol</th>
+              <th scope="col">Name</th>
+              <th scope="col">Share</th>
+              <th scope="col">Price</th>
+              <th scope="col">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+
+           {% if recent_row %}
+
+                {% for items in recent_row %}
+                    <tr>
+                       <td>{{ items.symbol }}</td>
+                       <td>{{ items.name }}</td>
+                       <td>{{ items.share }}</td>
+                       <td>{{ items.price | usd }}</td>
+                       <td>{{ items.total | usd }}</td>
+                    </tr>
+                {% endfor %}
+
+           {% endif %}
+
+            <tr>
+              <td>Cash</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>{{ cur_cash | usd }}</td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>{{ total_amount | usd }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
